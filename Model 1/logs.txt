@@ -1,0 +1,58 @@
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Decryption | Key: aku anak mama | Time: 0.0 ms
+Encryption | Key: fesf | Time: 3.008 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 1.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 1.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 1.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Encryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 0.0 ms
+Decryption | Key: fesf | Time: 162572184024493.34 ms
+Decryption | Key: fesf | Time: 162580574509384.94 ms
+Encryption | Key: fesf | Time: 162654192080011.3 ms
+Encryption | Key: fesf | Time: 162702767392062.75 ns
+Encryption | Key: fesf | Time: 162708936723956.6 ns
+Encryption | Key: fesf | Time: 162886636.39 ms
+Encryption | Key: sawdawd | Time: 162971282.65 ms
+Encryption | Key: sawdawd | Time: 163010490.50 ms
+Decryption | Key: sawdawd | Time: 163025443.61 ms
+Encryption | Key: 12345 | Time: 144496413.61 ms
+Encryption | Key: 12345 | Time: 144660643.43 ms
+Encryption | Key: 12345 | Time: 11625599.77 ms
+Encryption | Key: 12345 | Time: 11626788.81 ms
+Encryption | Key: 12345 | Time: 11627861.27 ms
+Encryption | Key: 12345 | Time: 11633236.10 ms
+Encryption | Key: 12345 | Time: 11727181.70 ms

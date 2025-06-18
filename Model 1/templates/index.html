@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DES Encryptor/Decryptor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --primary-dark: #3a56d4;
+            --light-bg: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+            --encrypt-color: #48bb78;
+            --decrypt-color: #e53e3e; 
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            position: relative;
+        }
+
+        header h1 i {
+            margin-right: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 30px 20px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            background: rgba(74, 107, 255, 0.1);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        textarea,
+        input[type="text"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            resize: none;
+            font-size: 14px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            background: #f8fafc;
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button[name="decrypt"] {
+            background: #f1f5f9;
+            color: var(--text-dark);
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        button[name="decrypt"]:hover {
+            background: #e2e8f0;
+        }
+
+        .log-card {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .log-content {
+            height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .log-entry:nth-child(odd) {
+            background: rgba(74, 107, 255, 0.05);
+        }
+
+        .log-entry i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+                .log-entry.encrypt {
+            color: var(--text-dark);
+        }
+        .log-entry.encrypt span {
+            color: var(--encrypt-color);
+        }
+        .log-entry.decrypt {
+            color: var(--text-dark);
+        }
+        .log-entry.decrypt span {
+            color: var(--decrypt-color);
+        }
+
+        .log-entry.encrypt i {
+            color: var(--encrypt-color);
+        }
+        .log-entry.decrypt i {
+            color: var(--decrypt-color);
+        }
+
+
+        .key-info {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            padding: 8px;
+            background: rgba(74, 107, 255, 0.05);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        footer {
+            width : 100%;
+            background: var(--card-bg);
+            text-align: center;
+            padding: 25px 25px;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .log-card { animation-delay: 0.4s; }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-lock"></i> DES Encryption & Decryption Tool</h1>
+    </header>
+
+    <!-- Main Content -->
+    <form method="POST">
+        <div class="container">
+            <!-- Input Text - LEFT -->
+            <div class="card">
+                <h3><i class="fas fa-keyboard"></i> Input Text</h3>
+                <textarea name="plain_text" placeholder="Enter text here...">{{ plain_text }}</textarea>
+            </div>
+
+            <!-- Key + Buttons - CENTER -->
+            <div class="card">
+                <h3><i class="fas fa-key"></i> Encryption Key</h3>
+                <input type="text" name="key" value="{{ key }}" placeholder="Enter any key..." required>
+                <div class="key-info">
+                    <i class="fas fa-info-circle"></i> Please enter a key
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" name="encrypt">
+                        <i class="fas fa-lock"></i> Encrypt
+                    </button>
+                    <button type="submit" name="decrypt">
+                        <i class="fas fa-lock-open"></i> Decrypt
+                    </button>
+                </div>
+            </div>
+
+            <!-- Output - RIGHT -->
+            <div class="card">
+                <h3><i class="fas fa-file-code"></i> Result</h3>
+                <textarea readonly placeholder="Encrypted or decrypted output...">{{ cipher_text }}</textarea>
+            </div>
+
+    <!-- Log History - FULL WIDTH BELOW -->
+    <div class="card log-card">
+        <h3><i class="fas fa-history"></i> Log History</h3>
+        <div class="log-content">
+            {% for entry in log_history %}
+                <div class="log-entry {% if 'Encrypt' in entry or 'encrypt' in entry %}encrypt{% else %}decrypt{% endif %}">
+                    <span>
+                        {% if 'Encrypt' in entry or 'encrypt' in entry %}
+                            <i class="fas fa-lock"></i> 
+                        {% else %}
+                            <i class="fas fa-lock-open"></i> 
+                        {% endif %}
+                        {{ entry }}
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DES Encryptor App | Developed by Kelompok 1 | Security and Privacy Solutions</p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                <i class="fas fa-shield-alt"></i> Note: DES is a symmetric-key algorithm for encryption. For stronger security, consider AES.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
